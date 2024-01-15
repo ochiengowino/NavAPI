@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="LoanApplicationsModelStoreContainer" CdmEntityContainer="LoanApplicationsEntities1">
+    <EntitySetMapping Name="LoanApplications">
+      <EntityTypeMapping TypeName="LoanApplicationsModel.LoanApplication">
+        <MappingFragment StoreEntitySet="LoanApplication">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Loan_No" ColumnName="Loan_No" />
+          <ScalarProperty Name="Application_Date" ColumnName="Application_Date" />
+          <ScalarProperty Name="Loan_Product_Type" ColumnName="Loan_Product_Type" />
+          <ScalarProperty Name="Loan_Product_Type_Name" ColumnName="Loan_Product_Type_Name" />
+          <ScalarProperty Name="Member_No" ColumnName="Member_No" />
+          <ScalarProperty Name="Member_Name" ColumnName="Member_Name" />
+          <ScalarProperty Name="Requested_Amount" ColumnName="Requested_Amount" />
+          <ScalarProperty Name="Approved_Amount" ColumnName="Approved_Amount" />
+          <ScalarProperty Name="Interest" ColumnName="Interest" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="RecID" ColumnName="RecID" />
+          <ScalarProperty Name="Captured_By" ColumnName="Captured_By" />
+          <ScalarProperty Name="Global_Dimension_1_Code" ColumnName="Global_Dimension_1_Code" />
+          <ScalarProperty Name="Global_Dimension_2_Code" ColumnName="Global_Dimension_2_Code" />
+          <ScalarProperty Name="Staff_No" ColumnName="Staff_No" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

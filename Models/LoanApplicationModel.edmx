@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="LoanApplicationModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="LoanApplications">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Application_Date" Type="date" />
+          <Property Name="Loan_Product_Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="Loan_Product_Type_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Member_No" Type="nvarchar" MaxLength="50" />
+          <Property Name="Member_Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Requested_Amount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Approved_Amount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Interest" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Status" Type="int" />
+          <Property Name="RecID" Type="nvarchar(max)" />
+          <Property Name="Captured_By" Type="nvarchar" MaxLength="100" />
+          <Property Name="Global_Dimension_1_Code" Type="nvarchar" MaxLength="50" />
+          <Property Name="Global_Dimension_2_Code" Type="nvarchar" MaxLength="50" />
+          <Property Name="Staff_No" Type="nvarchar" MaxLength="50" />
+          <Property Name="Loan_No" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="LoanApplicationModelStoreContainer">
+          <EntitySet Name="LoanApplications" EntityType="Self.LoanApplications" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LoanApplicationModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="LoanApplication">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Application_Date" Type="DateTime" Precision="0" />
+          <Property Name="Loan_Product_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Loan_Product_Type_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Member_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Member_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Requested_Amount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Approved_Amount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Interest" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="RecID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Captured_By" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Global_Dimension_1_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Global_Dimension_2_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Staff_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Loan_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="LoanApplicationEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="LoanApplications" EntityType="Self.LoanApplication" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LoanApplicationModelStoreContainer" CdmEntityContainer="LoanApplicationEntities">
+          <EntitySetMapping Name="LoanApplications">
+            <EntityTypeMapping TypeName="LoanApplicationModel.LoanApplication">
+              <MappingFragment StoreEntitySet="LoanApplications">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Application_Date" ColumnName="Application_Date" />
+                <ScalarProperty Name="Loan_Product_Type" ColumnName="Loan_Product_Type" />
+                <ScalarProperty Name="Loan_Product_Type_Name" ColumnName="Loan_Product_Type_Name" />
+                <ScalarProperty Name="Member_No" ColumnName="Member_No" />
+                <ScalarProperty Name="Member_Name" ColumnName="Member_Name" />
+                <ScalarProperty Name="Requested_Amount" ColumnName="Requested_Amount" />
+                <ScalarProperty Name="Approved_Amount" ColumnName="Approved_Amount" />
+                <ScalarProperty Name="Interest" ColumnName="Interest" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="RecID" ColumnName="RecID" />
+                <ScalarProperty Name="Captured_By" ColumnName="Captured_By" />
+                <ScalarProperty Name="Global_Dimension_1_Code" ColumnName="Global_Dimension_1_Code" />
+                <ScalarProperty Name="Global_Dimension_2_Code" ColumnName="Global_Dimension_2_Code" />
+                <ScalarProperty Name="Staff_No" ColumnName="Staff_No" />
+                <ScalarProperty Name="Loan_No" ColumnName="Loan_No" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

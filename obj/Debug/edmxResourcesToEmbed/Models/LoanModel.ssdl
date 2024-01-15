@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LoanApplicationsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="LoanApplication">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Loan_No" Type="varchar" MaxLength="50" />
+    <Property Name="Application_Date" Type="datetime" />
+    <Property Name="Loan_Product_Type" Type="varchar" MaxLength="100" />
+    <Property Name="Loan_Product_Type_Name" Type="varchar" MaxLength="100" />
+    <Property Name="Member_No" Type="nchar" MaxLength="100" />
+    <Property Name="Member_Name" Type="varchar" MaxLength="100" />
+    <Property Name="Requested_Amount" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Approved_Amount" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Interest" Type="decimal" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+    <Property Name="RecID" Type="nvarchar" MaxLength="50" />
+    <Property Name="Captured_By" Type="varchar" MaxLength="50" />
+    <Property Name="Global_Dimension_1_Code" Type="varchar" MaxLength="50" />
+    <Property Name="Global_Dimension_2_Code" Type="varchar" MaxLength="50" />
+    <Property Name="Staff_No" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityContainer Name="LoanApplicationsModelStoreContainer">
+    <EntitySet Name="LoanApplication" EntityType="Self.LoanApplication" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

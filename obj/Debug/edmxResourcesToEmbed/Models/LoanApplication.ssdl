@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MobiApiDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="__EFMigrationsHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+    </Key>
+    <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CustomerTransactions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AcctNo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Amount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="BookedBalance" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="ClearedBalance" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Currency" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CustMemoLine1" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="EventType" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ExchangeRate" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Narration" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Narration2" Type="nvarchar(max)" />
+    <Property Name="Narration3" Type="nvarchar(max)" />
+    <Property Name="PaymentRef" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TransactionDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="TransactionId" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NavTransactions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Loan_No" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Application_Date" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="Loan_Product_Type" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Loan_Product_Type_Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Member_No" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Member_Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Requested_Amount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Approved_Amount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Interest" Type="int" Nullable="false" />
+    <Property Name="Status" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="RecID" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Captured_By" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Global_Dimension_1_Code" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Global_Dimension_2_Code" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Staff_No" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="MobiApiDBModelStoreContainer">
+    <EntitySet Name="__EFMigrationsHistory" EntityType="Self.__EFMigrationsHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CustomerTransactions" EntityType="Self.CustomerTransactions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NavTransactions" EntityType="Self.NavTransactions" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

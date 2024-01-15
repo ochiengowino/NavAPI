@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LoanApplicationModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="LoanApplication">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Application_Date" Type="DateTime" Precision="0" />
+    <Property Name="Loan_Product_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Loan_Product_Type_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Member_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Member_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Requested_Amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Approved_Amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Interest" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="Status" Type="Int32" />
+    <Property Name="RecID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Captured_By" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Global_Dimension_1_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Global_Dimension_2_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Staff_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Loan_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="LoanApplicationEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="LoanApplications" EntityType="Self.LoanApplication" />
+  </EntityContainer>
+</Schema>
