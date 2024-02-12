@@ -35,6 +35,8 @@ namespace API.Controllers
             //ws.UseDefaultCredentials = true;
             _ws.Credentials = new NetworkCredential("ochiengowinoben", "D3271n3d4gr87n322");
         }
+
+
         [HttpGet]
         public IHttpActionResult Get()
         {
@@ -92,8 +94,6 @@ namespace API.Controllers
                 Message = "Successfully received data"
             };
 
-
-
             return Ok(successState);
         }
 
@@ -104,7 +104,7 @@ namespace API.Controllers
             var entries = db.LoanApplications.ToList();
             try
             {
-             
+
                 /*  var loan_no = _client.Loan_No;
                  var application_date = _client.Application_Date;
                  var loan_prod_type = _client.Loan_Product_Type;
@@ -123,6 +123,7 @@ namespace API.Controllers
                 // member_name = "John Doe";
                 //application_date = (DateTime)entry.Application_Date;
                 // prduct_type_name = "Development Loan";
+                List<object> LoanApp = new List<object>();
                 if (entries != null)
                 {
                    // var clientList = new List<string>();
@@ -130,23 +131,25 @@ namespace API.Controllers
                     {
                         if (entry.Id == 8)
                         {
-                            /* var loanList = new LoanApplicationList
-                             {
-                                 Member_Name = entry.Member_Name,
-                                 Member_No = entry.Member_No,
-                                 Application_Date = (DateTime)entry.Application_Date,
-                                 Loan_No = "LBN00040",
-                                 Loan_Product_Type = entry.Loan_Product_Type,
-                                 Loan_Product_Type_Name = entry.Loan_Product_Type_Name,
-                                 Requested_Amount = (decimal)entry.Requested_Amount,
-                                 Approved_Amount = (decimal)entry.Approved_Amount,
-                                 Interest = (decimal)entry.Interest,
-                                 //Status = ()entry.Status
-                             };*/
+                            var loanList = new LoanApplicationList
+                            {
+                                Member_Name = entry.Member_Name,
+                                Member_No = entry.Member_No,
+                                Application_Date = (DateTime)entry.Application_Date,
+                                Loan_No = "LBN00097",
+                                Loan_Product_Type = entry.Loan_Product_Type,
+                                Loan_Product_Type_Name = entry.Loan_Product_Type_Name,
+                                Requested_Amount = (decimal)entry.Requested_Amount,
+                                Approved_Amount = (decimal)entry.Approved_Amount,
+                                Interest = (decimal)entry.Interest,
+                                //RecID = entry.RecID,
+                                // Status = (string)entry.Status
+                            };
+                           // LoanApp.Add(loanList);
                             //loan_no = "LBN00096";
-                           // _client.Loan_No = entry.Loan_No;
-                            _client.Member_Name = entry.Member_Name;
-                            _client.Member_No = entry.Member_No;
+                            // _client.Loan_No = entry.Loan_No;
+                           /* _client.Member_Name = entry.Member_Name;
+                            _client.Member_No = entry.Member_No;*/
                            // _client.Loan_Product_Type = entry.Loan_Product_Type;
                            // _client.Requested_Amount = (decimal)entry.Requested_Amount;
                             /*       _client.Application_Date = (DateTime)entry.Application_Date;
@@ -155,10 +158,10 @@ namespace API.Controllers
                                   _client.Requested_Amount = (decimal)entry.Requested_Amount;
                                   _client.Approved_Amount = (decimal)entry.Approved_Amount;
                                   _client.Member_No = "1181054";*/
-                            _ws.Create(ref _client);
+                          //  _ws.Create(ref _client);
 
-                            // _ws.Create(ref loanList);
-                            return Ok(_client);
+                             _ws.Create(ref loanList);
+                            return Ok(loanList);
                         }
 
 
