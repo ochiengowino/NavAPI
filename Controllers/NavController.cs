@@ -16,13 +16,10 @@ namespace API.Controllers
 
     public class NavController : ApiController
     {
-
-       
         private LoanApplicationEntities db = new LoanApplicationEntities();
         LoanApplicationList_Service _ws = new LoanApplicationList_Service();
         LoanApplicationList _client = new LoanApplicationList();
         
-      
         public NavController()
         {
            // LoanApplicationList_Service _ws = new LoanApplicationList_Service();
@@ -47,12 +44,12 @@ namespace API.Controllers
             //filters.Add(filter);
 
             var list = _ws.ReadMultiple(filters.ToArray(), "", 0);
+      
 
             foreach (var item in list)
             {
                 var newEntry = new LoanApplication
                 {
-
                     Loan_No = item.Loan_No,
                     Application_Date = item.Application_Date,
                     Loan_Product_Type = item.Loan_Product_Type,
@@ -80,6 +77,7 @@ namespace API.Controllers
                 Message = "Successfully received data"
             };
 
+            // return Ok(list);
             return Ok(successState);
         }
 
@@ -96,19 +94,19 @@ namespace API.Controllers
                    // var clientList = new List<string>();
                     foreach (var entry in entries)
                     {
-                        if (entry.Id == 8)
+                        if (entry.Id == 3)
                         {
                             var loanList = new LoanApplicationList
                             {
                                 Member_Name = entry.Member_Name,
                                 Member_No = entry.Member_No,
                                 Application_Date = (DateTime)entry.Application_Date,
-                                Loan_No = "LBN00097",
-                                Loan_Product_Type = entry.Loan_Product_Type,
+                                Loan_No = "LBN000100",
+                               /* Loan_Product_Type = entry.Loan_Product_Type,
                                 Loan_Product_Type_Name = entry.Loan_Product_Type_Name,
                                 Requested_Amount = (decimal)entry.Requested_Amount,
                                 Approved_Amount = (decimal)entry.Approved_Amount,
-                                Interest = (decimal)entry.Interest,
+                                Interest = (decimal)entry.Interest,*/
                                 //RecID = entry.RecID,
                                 // Status = (string)entry.Status
                             };
@@ -128,7 +126,6 @@ namespace API.Controllers
                 {
                     return BadRequest("No data found in the DB");
                 }
-
             }
             catch (Exception ex)
             {
