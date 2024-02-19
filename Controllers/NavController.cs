@@ -10,6 +10,7 @@ using System.Web.Services;
 using API.ochiengowino;
 using API.Context;
 using API.Models;
+using System.ServiceModel;
 
 namespace API.Controllers
 {
@@ -22,7 +23,11 @@ namespace API.Controllers
         
         public NavController()
         {
-           // LoanApplicationList_Service _ws = new LoanApplicationList_Service();
+          /*  BasicHttpBinding _binding = new BasicHttpBinding();
+            //Set https usage
+            _binding.Security.Mode = BasicHttpSecurityMode.Transport;
+            _binding.Security.Transport.ClientCredentialType = HttpClientCredentialType.Basic;*/
+            // LoanApplicationList_Service _ws = new LoanApplicationList_Service();
             _ws.Url = "http://ochiengowino:3332/CapitalSaccoInstance/WS/CAPITAL%20SACCO/Page/LoanApplicationList";
             //ws.UseDefaultCredentials = true;
             _ws.Credentials = new NetworkCredential("ochiengowinoben", "D3271n3d4gr87n322");
@@ -30,16 +35,15 @@ namespace API.Controllers
 
 
         [HttpGet]
+        [Route("api/getnav")]
         public IHttpActionResult Get()
         {
-            
-
             List<LoanApplicationList_Filter> filters = new List<LoanApplicationList_Filter>();
-            LoanApplicationList_Filter filter = new LoanApplicationList_Filter
+            /*LoanApplicationList_Filter filter = new LoanApplicationList_Filter
             {
                 Field = LoanApplicationList_Fields.Member_Name,
                 Criteria = "*"
-            };
+            };*/
 
             //filters.Add(filter);
 
@@ -77,18 +81,19 @@ namespace API.Controllers
                 Message = "Successfully received data"
             };
 
-            // return Ok(list);
-            return Ok(successState);
+             return Ok(list);
+            //return Ok(successState);
         }
 
 
         [HttpPost]
+        [Route("api/postnav")]
         public IHttpActionResult Post()
         {
             var entries = db.LoanApplications.ToList();
             try
             {
-                List<object> LoanApp = new List<object>();
+               /* List<object> LoanApp = new List<object>();*/
                 if (entries != null)
                 {
                    // var clientList = new List<string>();
@@ -102,21 +107,19 @@ namespace API.Controllers
                                 Member_No = entry.Member_No,
                                 Application_Date = (DateTime)entry.Application_Date,
                                 Loan_No = "LBN000100",
-                               /* Loan_Product_Type = entry.Loan_Product_Type,
+                                Loan_Product_Type = entry.Loan_Product_Type,
                                 Loan_Product_Type_Name = entry.Loan_Product_Type_Name,
                                 Requested_Amount = (decimal)entry.Requested_Amount,
                                 Approved_Amount = (decimal)entry.Approved_Amount,
-                                Interest = (decimal)entry.Interest,*/
-                                //RecID = entry.RecID,
-                                // Status = (string)entry.Status
+                                Interest = (decimal)entry.Interest,
+                                RecID = entry.RecID,
+                                Status =(Status) 1
                             };
                       
 
                              _ws.Create(ref loanList);
                             return Ok(loanList);
                         }
-
-
                     }
                    
                     return Ok("Data sent to nav");
@@ -134,6 +137,60 @@ namespace API.Controllers
                
             }
        
+        }
+
+        [HttpPost]
+        [Route("api/updatenav")]
+        public IHttpActionResult updateNav() 
+        {
+            try
+            {
+                List<LoanApplicationList_Filter> filters = new List<LoanApplicationList_Filter>();
+                //List<LoanApplicationList> loanList = new List<LoanApplicationList>();
+                
+                var list = _ws.ReadMultiple(filters.ToArray(), "", 0);
+                LoanApplicationList cl = _ws.Read("LBN00014");
+
+                /*if(_client.Loan_No == cl.Loan_No)
+                {
+
+                }*/
+                cl.Member_Name = "Leon Austine";
+                cl.Loan_Product_Type = "L01";
+                //cl.Loan_Product_Type_Name = "Development Loan";
+                // cl.Member_No = "12345677";
+                //cl.Requested_Amount = 5000000;
+                //cl.Approved_Amount = 4000000;
+                // cl.Interest = (decimal)12.00;
+                _ws.Update(ref cl);
+                // var rad = _ws.Read(_client.Member_Name);
+                /*  if (_client.Loan_No == "LBN00002")
+                  {
+                      return Ok(_client.Member_Name);
+                  }*/
+         /*       foreach (var item in list)
+                {
+                    if (item.Loan_No == "LBN00002")
+                    {
+                        item.Member_Name = "John Doe";
+                        var updatedList = new LoanApplicationList
+                        {
+                            Member_Name = "John Doe",
+                            Member_No = "1234567"
+                        };
+                        _ws.Update(ref updatedList);
+                        return Ok(updatedList);
+                    }
+                }*/
+                //var list = _ws.Read(_client.Loan_No);
+
+                return Ok(cl);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"An error occurred: {ex.Message}");
+            }
+            
         }
     }
 }
